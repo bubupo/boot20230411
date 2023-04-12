@@ -5,7 +5,7 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class Controller1 {
+public class Controller01 {
 
 	@RequestMapping("/sub1/link1")
 	public void method01(){

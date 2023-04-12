@@ -70,4 +70,36 @@ public class Controller04 {
 		
 	}
 	
+	@RequestMapping("link6")
+	public void method6(@RequestParam String email) {
+		System.out.println(email);
+	}
+	
+	
+	//경로 : /sub4/link7?age=33
+	
+	@RequestMapping("link7")
+	public void method7(@RequestParam String age) {
+		System.out.println(age);
+	}
+	//경로  : /sub4/link8?address=seoul
+	
+	@RequestMapping("link8")
+	public void method8(String address) {
+		System.out.println(address);
+	}
+	
+	
+	//경로 : /sub4/link9?score=99.7
+	//method9 작성
+	@RequestMapping("link9")
+	public void method9(double score) {
+		System.out.println(score);
+	}
 }
+
+
+
+
+
+
