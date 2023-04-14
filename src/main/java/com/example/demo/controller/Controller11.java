@@ -16,7 +16,7 @@ public class Controller11 {
 
 	@Value("${spring.datasource.url}")
 	private String url;
-	@Value("${spring.datasource.name}")
+	@Value("${spring.datasource.username}")
 	private String name;
 	@Value("${spring.datasource.password}")
 	private String password;
@@ -29,7 +29,7 @@ public class Controller11 {
 
 		// 아이디 1 고객이름 조회
 		// SELECT CustomerName FROM Customers WHERE CustomerID = 1;
-
+		
 		String sql = "SELECT CustomerName FROM Customers WHERE CustomerID = 1";
 		try (
 				// db 연결
