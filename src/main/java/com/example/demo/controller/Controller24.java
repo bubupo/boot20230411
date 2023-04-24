@@ -65,16 +65,21 @@ public class Controller24 {
 	}
 	
 	// 직원 조회 및 수정 코드 작성
-	@RequestMapping("link7")
-	public void method(Employee employee) {
-		int cnt = mapper.sql6(employee);
-		System.out.println(cnt + "개 행 수정됨");
+		// 경로 : /sub24/link7?id=3
+		@RequestMapping("link7")
+		public void method7(Integer id, Model model) {
+			Employee emp = mapper.sql6(id);
+			model.addAttribute("employee", emp);
+		}
+		
+		// 경로 : /sub24/link8
+		// method : post
+		@RequestMapping("link8")
+		public void method8(Employee e) {
+			int cnt = mapper.sql7(e);
+			System.out.println(cnt + "개 행 수정됨");
+		}
 	}
 	
-	@RequestMapping("link8")
-	public void method1(Integer id, Model model) {
-		Employee employee = mapper.sql7(id);
-		model.addAttribute("employee", employee);
-	}
 	
-}
+	

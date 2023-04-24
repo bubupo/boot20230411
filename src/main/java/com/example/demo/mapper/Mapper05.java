@@ -63,30 +63,29 @@ public interface Mapper05 {
 			""")
 	Customer sql5(Integer id);
 	
-	@Update("""
-			UPDATE Employees
-			SET
-				LastName = #{lastName},
-				FirstName = #{firstName},
-				BirthDate = #{birthDate},
-				Photo = #{photo},
-				Notes = #{notes}
-			WHERE 
-				EmployeeId = #{id}
-			""")
-	int sql6(Employee employee);
-	
 	@Select("""
 			SELECT 
-				EmployeeId id,
+				EmployeeId AS id,
 				LastName,
 				FirstName,
-				BirthDate,
+				Notes,
 				Photo,
-				Country,
-				Notes
-			FROM Employee
+				BirthDate birth
+			FROM Employees
 			WHERE EmployeeId = #{id}
 			""")
-	Employee sql7(Integer id);
+	Employee sql6(Integer id);
+	
+	@Update("""
+			UPDATE Employees
+			SET 
+				LastName = #{lastName},
+				FirstName = #{firstName},
+				Photo = #{photo},
+				Notes = #{notes},
+				BirthDate = #{birth}
+			WHERE
+				EmployeeId = #{id}
+			""")
+	int sql7(Employee employee);
 }

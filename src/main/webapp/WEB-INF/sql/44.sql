@@ -49,8 +49,8 @@ CREATE TABLE MyTable39(
  SELECT  * from MyTable40;
  
  
- DESC Employee;
+SELECT * from Employees;
  
  
  
- 
+ ㅈ

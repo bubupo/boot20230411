@@ -10,22 +10,38 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-<h1>${customer.id }번 고객 수정</h1>
+	<h1>${employee.id }번 직원 수정</h1>
 	<div>
-		<form action="/sub24/link7" method="post">
-			<input type="hidden" name="id" value="${employee.id }" />
-			첫번째 이름 <input type="text" name="firstname" value="${employee.firstname }" /> <br />
-			마지막 이름 <input type="text" 
-				name="lastname" value="${employee.lastname }" /> <br />
-			생일 <input type="text" name="birth" value="${employee.birth }"/> <br />
-			사진 <input type="text" name="photo" value="${employee.photo }"/> <br />
-			정보 <input type="text" name="notes" value="${employee.notes }" /> <br />
-			<input type="submit" value="수정" />
-			
-		
+		<form action="/sub24/link8" method="post">
+			<div>
+				<input type="hidden" name="id" value="${employee.id }"/>
+			</div>
+			<div>
+				LastName : <input type="text" name="lastName" value="${employee.lastName }"/>
+			</div>
+			<div>
+				FirstName : <input type="text" name="firstName" value="${employee.firstName }"/>
+			</div>
+			<div>
+				사진 : <input type="text" name="photo" value="${employee.photo }"/>
+			</div>
+			<div>
+				생일 : <input type="date" name="birth" value="${employee.birth }"/>
+			</div>
+			<div>
+				<%--
+				<input type="text" name="notes" value="${employee.notes }"/>
+				 --%>
+				Notes : <textarea name="notes">${employee.notes }</textarea>
+			</div>
+			<div>
+				<input type="submit" value="수정" />
+			</div>
 		
 		</form>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
