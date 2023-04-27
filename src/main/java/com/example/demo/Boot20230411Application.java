@@ -36,7 +36,7 @@ public class Boot20230411Application {
 		
 		Object c4 = context.getBean("componentD");
 		System.out.println(c4);
-		ComponentE c5 = (ComponentE) context.getBean("componentE");
+		ConponentE c5 = (ConponentE) context.getBean("conponentE");
 		System.out.println(c5.getComp());
 	}
 
@@ -48,3 +48,4 @@ public class Boot20230411Application {
 		e.setId(100); // 프로퍼티 직접 할당
 	}
 }
+
