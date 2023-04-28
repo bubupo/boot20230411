@@ -17,6 +17,8 @@ VALUES ('샘플 제목', '샘플 본문','user00');
 
 SELECT * FROM Board ORDER BY id DESC;
 
+DELETE FROM Board;
+
 
 
 
