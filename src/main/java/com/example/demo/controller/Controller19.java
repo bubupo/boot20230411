@@ -122,7 +122,7 @@ public class Controller19 {
 
 	@RequestMapping("link6")
 	public void method6() {
-		// forward to from
+		// forward to form
 		// /WEB-INF/views/sub19/link6.jsp
 	}
 
@@ -132,16 +132,13 @@ public class Controller19 {
 			@RequestParam("age") String age,
 			@RequestParam("price") String price,
 			@RequestParam("birth") String birth,
-			@RequestParam("inserted") String inserted
+			@RequestParam("inserted") String inserted) throws Exception {
 
-	) throws Exception {
 		String sql = """
 				INSERT INTO MyTable32 (Name, Age, Price, Birth, Inserted)
-				VALUES (?,?,?,?,?)
+				VALUES (?, ?, ?, ?, ?)
 				""";
-
-		try (
-				Connection con = DriverManager.getConnection(url, username, password);
+		try (Connection con = DriverManager.getConnection(url, username, password);
 				PreparedStatement pstmt = con.prepareStatement(sql);) {
 
 			pstmt.setString(1, name);
@@ -151,9 +148,7 @@ public class Controller19 {
 			pstmt.setString(5, inserted);
 			int cnt = pstmt.executeUpdate();
 			System.out.println(cnt + "개 행 입력됨");
-
 		}
-
 	}
 
 	@RequestMapping("link8")
@@ -182,9 +177,11 @@ public class Controller19 {
 
 	}
 
+	// method9 : form이 있는 view로 포워드
+	// method10 : 전송된 데이터를 MyTable33에 추가
+
 	@RequestMapping("link9")
 	public void method9() {
-		// forward to from
 		// /WEB-INF/views/sub19/link9.jsp
 	}
 
@@ -215,14 +212,12 @@ public class Controller19 {
 	}
 
 	@RequestMapping("link11")
-	public void method11() throws Exception{
+	public void method11() throws Exception {
 		String sql = """
 				SELECT Title, Published, Price, Updated, Weight
 				FROM MyTable33
 				""";
-
-		try (
-				Connection con = DriverManager.getConnection(url, username, password);
+		try (Connection con = DriverManager.getConnection(url, username, password);
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);) {
 
@@ -240,18 +235,15 @@ public class Controller19 {
 				System.out.println("무게:" + weight);
 			}
 		}
-
 	}
-	
+
 	@RequestMapping("link12")
-	public void method12() throws Exception{
+	public void method12() throws Exception {
 		String sql = """
 				SELECT Title, Published, Price, Updated, Weight
 				FROM MyTable33
 				""";
-
-		try (
-				Connection con = DriverManager.getConnection(url, username, password);
+		try (Connection con = DriverManager.getConnection(url, username, password);
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);) {
 
@@ -269,41 +261,38 @@ public class Controller19 {
 				System.out.println("무게:" + weight);
 			}
 		}
-
 	}
-	//my table 32번 데이터 조회후 출력
-	//13번 메소트 작성
-	
+
+	// MyTable32의 데이터 조회후 출력하는
+	// 13번 메소드 작성
 	@RequestMapping("link13")
-	public void method13() throws Exception{
+	public void method13() throws Exception {
 		String sql = """
-				SELECT  name, Age,Price, Birth, Inserted
+				SELECT Name, Age, Price, Birth, Inserted
 				FROM MyTable32
 				""";
-
 		try (
 				Connection con = DriverManager.getConnection(url, username, password);
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);) {
 
 			if (rs.next()) {
-				String name = rs.getString("name");
-				Integer age = rs.getInt("age");
-				Double price = rs.getDouble("price");
-				LocalDate birth = rs.getDate("birth").toLocalDate();
-				LocalDateTime inserted = rs.getTimestamp("inserted").toLocalDateTime();
+				String string = rs.getString("name");
+				int int1 = rs.getInt("age");
+				double double1 = rs.getDouble("price");
+				LocalDate localDate = rs.getDate("birth").toLocalDate();
+				LocalDateTime localDateTime = rs.getTimestamp("inserted").toLocalDateTime();
 
-				System.out.println("이름:" + name);
-				System.out.println("나이:" + age);
-				System.out.println("가격:" + price);
-				System.out.println("생일:" + birth);
-				System.out.println("수정일시:" + inserted);
-				
+				System.out.println("이름:" + string);
+				System.out.println("나이:" + int1);
+				System.out.println("가격:" + double1);
+				System.out.println("생일:" + localDate);
+				System.out.println("입력일시:" + localDateTime);
+
 			}
 		}
-
 	}
-	
+
 	@RequestMapping("link14")
 	public void method14(Model model) throws Exception {
 		// 1. request param 수집/가공
@@ -334,10 +323,13 @@ public class Controller19 {
 		// 4. forward/redirect
 	}
 	
+	// /sub19/link15
+	// MyTable33 에 있는 데이터들 jsp에서 보여주기
+	// 메소드, java beans, jsp
+	
+	// 선택)link9에서 데이터 더 넣기
 	@RequestMapping("link15")
 	public void method15(Model model) throws Exception {
-		// 1. request param 수집/가공
-		// 2. business logic (crud)
 		List<Dto06> list = new ArrayList<>();
 		String sql = """
 				SELECT Title, Published, Price, Updated, Weight
@@ -346,8 +338,9 @@ public class Controller19 {
 		try (
 				Connection con = DriverManager.getConnection(url, username, password);
 				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(sql);) {
-
+				ResultSet rs = stmt.executeQuery(sql);
+				) {
+			
 			while (rs.next()) {
 				Dto06 o = new Dto06();
 				o.setTitle(rs.getString("title"));
@@ -358,10 +351,16 @@ public class Controller19 {
 				
 				list.add(o);
 			}
+		
 		}
-		// 3. add attribute
-		model.addAttribute("memberList", list);
-		// 4. forward/redirect
+		model.addAttribute("bookList", list);
 	}
-
 }
+
+
+
+
+
+
+
+

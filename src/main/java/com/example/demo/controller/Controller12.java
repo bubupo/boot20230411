@@ -111,7 +111,6 @@ public class Controller12 {
 			e.printStackTrace();
 		}
 
-	
 	}
 	
 	@RequestMapping("link4")
@@ -119,97 +118,92 @@ public class Controller12 {
 		String sql = "SELECT * FROM Customers";
 		
 		try {
+			
 			Connection con = DriverManager.getConnection(url, name, password);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			
-			try (con; stmt; rs;){
-				
+			try (con; stmt; rs;) {
 				rs.next();
 				System.out.println(rs.getString("customerName"));
-				System.out.println(rs.getString("contacName"));
+				System.out.println(rs.getString("contactName"));
 				System.out.println(rs.getString("country"));
 				
 				rs.next();
 				System.out.println(rs.getString("customerName"));
-				System.out.println(rs.getString("contacName"));
+				System.out.println(rs.getString("contactName"));
 				System.out.println(rs.getString("country"));
+				
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 	}
 	
 	@RequestMapping("link5")
 	public void method5() {
-		String sql = "SELECT * FROM Customers";
+String sql = "SELECT * FROM Customers";
 		
 		try {
+			
 			Connection con = DriverManager.getConnection(url, name, password);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			
-			try (con; stmt; rs;){
-				
+			try (con; stmt; rs;) {
 				while (rs.next()) {
-					System.out.println("######");
+					System.out.println("################");
 					System.out.println(rs.getString("customerName"));
-					System.out.println(rs.getString("contacName"));
+					System.out.println(rs.getString("contactName"));
 					System.out.println(rs.getString("country"));
 				}
-				
-				
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	@RequestMapping("link6")
 	public void method6() throws Exception {
-		String sql = "SELECT * FROM Products WHERE ProductId <=3";
-		
+		String sql = "SELECT * FROM Products WHERE ProductId <= 3";
 		
 		Connection con = DriverManager.getConnection(url, name, password);
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
-		
-		try(con; stmt; rs;){
-			
+
+		try (con; stmt; rs;) {
 			while (rs.next()) {
-				System.out.println(rs.getInt("productID"));
-				System.out.println(rs.getString("productName"));
-				System.out.println(rs.getDouble("price"));
+				System.out.println(rs.getInt("ProductID"));
+				System.out.println(rs.getString("ProductName"));
+				System.out.println(rs.getDouble("Price"));
 			}
 		}
 	}
-	
-	//SELCT * FROM Customers WHERS CustomerID < 4
-	//CustomerID 는 int  타입으로 가져오기
-	//CustomerName 은 String 타입으로 가져오기
+
+	// SELECT * FROM Customers WHERE CustomerID < 4
+	// CustomerID 는 int 타입으로 가져오기
+	// CustomerName 은 String 타입으로 가져오기
+	// 경로 link7
 	@RequestMapping("link7")
 	public void method7() throws Exception {
-		String sql = "SELECT * FROM Customers WHERE CustomerID < 4";
-		
+		String sql = """
+				SELECT * FROM Customers WHERE CustomerID < 4
+				""";
 		
 		Connection con = DriverManager.getConnection(url, name, password);
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		
-		try(con; stmt; rs;){
-			
+		try (con; stmt; rs) {
 			while (rs.next()) {
-				System.out.println(rs.getInt("CustomerID"));
+				/*
+				System.out.println(rs.getInt("CustomerId"));
 				System.out.println(rs.getString("CustomerName"));
-				
+				*/
+				System.out.println(rs.getInt(1));
+				System.out.println(rs.getString(2));
 			}
 		}
+		
 	}
 	
 	@RequestMapping("link8")
@@ -234,41 +228,37 @@ public class Controller12 {
 		}
 		
 	}
+	
 	@RequestMapping("link9")
-	public void method9() throws Exception{
-		String sql = """
-				SELECT CustomerId, 
-						CustomerName, 
-						Country
-				FROM Employees
-				WHERE EmployeeID < 4
-				""";
+	public void method9() throws Exception {
 		// 고객테이블 조회 쿼리 작성
 		// 나머지 코드들도 완성
 		
+		String sql = """
+				SELECT CustomerId,
+				       CustomerName,
+				       Country
+				FROM Customers
+				WHERE CustomerID < 4
+				""";
 		Connection con = DriverManager.getConnection(url, name, password);
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
-		try (con; stmt; rs;){
-			
+		
+		try (con; stmt; rs;) {
 			while (rs.next()) {
 				int customerId = rs.getInt(1);
 				String customerName = rs.getString(2);
 				String country = rs.getString(3);
 				System.out.println(customerId + ", " + customerName + ", " + country);
 			}
+			
 		}
+		
 	}
-}
 	
-
-
-
-
-
-
-
-
+	
+}
 
 
 

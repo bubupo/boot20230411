@@ -125,83 +125,77 @@ public class Controller13 {
 
 		return "/sub13/link1";
 	}
-	
-	
-		// 경로 : /sub13/link4?id=5
-		@RequestMapping("link4")
-		public String method4(@RequestParam String id, Model model) throws Exception {
-			List<Customer> list = new ArrayList<>();
-			String sql = """
-					SELECT CustomerId, CustomerName, Address
-					FROM Customers
-					WHERE CustomerId = ? """;
 
-			Connection con = DriverManager.getConnection(url, name, password);
-			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, id);
-			
-			ResultSet rs = stmt.executeQuery();
+	// 경로 : /sub13/link4?id=5
+	@RequestMapping("link4")
+	public String method4(@RequestParam String id, Model model) throws Exception {
+		List<Customer> list = new ArrayList<>();
+		String sql = """
+				SELECT CustomerId, CustomerName, Address
+				FROM Customers
+				WHERE CustomerId = ? """;
 
-			try (con; stmt; rs;) {
-				while (rs.next()) {
-					Customer customer = new Customer();
-					customer.setId(rs.getInt("customerid"));
-					customer.setAddress(rs.getString("address"));
-					customer.setName(rs.getString("customerName"));
+		Connection con = DriverManager.getConnection(url, name, password);
+		PreparedStatement stmt = con.prepareStatement(sql);
+		stmt.setString(1, id);
+		
+		ResultSet rs = stmt.executeQuery();
 
-					list.add(customer);
-				}
+		try (con; stmt; rs;) {
+			while (rs.next()) {
+				Customer customer = new Customer();
+				customer.setId(rs.getInt("customerid"));
+				customer.setAddress(rs.getString("address"));
+				customer.setName(rs.getString("customerName"));
 
+				list.add(customer);
 			}
 
-			model.addAttribute("customerList", list);
+		}
 
-			return "/sub13/link1";
+		model.addAttribute("customerList", list);
+
+		return "/sub13/link1";
+	}
+	
+	
+	// /sub13/link5?id=3
+	@RequestMapping("link5")
+	public String method5(String id, Model model) throws Exception {
+		// 사용자에게 직원 id 입력 받아서
+		// 쿼리 완성하고 실행 후에
+		// /sub13/link2 로 포워드해서 직원 1명 정보 출력
+		var list = new ArrayList<Employee>();
+		String sql = """
+				SELECT EmployeeId,
+				       lastName,
+				       firstName
+				FROM Employees
+				WHERE EmployeeId = ?
+				""";
+		
+		Connection con = DriverManager.getConnection(url, name, password);
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		try (con; pstmt; rs;) {
+			while (rs.next()) {
+				Employee employee = new Employee();
+				employee.setId(rs.getInt("employeeId"));
+				employee.setFirstName(rs.getString("firstName"));
+				employee.setLastName(rs.getString("lastName"));
+				
+				list.add(employee);
+			}
 		}
 		
-		// /sub13/link5?id=3
-		@RequestMapping("link5")
-		public String method5(String id, Model model) throws Exception {
-			// 사용자에게 직원 id 입력 받아서
-			// 쿼리 완성하고 실행 후에
-			// /sub13/link2 로 포워드해서 직원 1명 정보 출력
-			var list = new ArrayList<Employee>();
-			String sql = """
-					SELECT EmployeeId,
-					       lastName,
-					       firstName
-					FROM Employees
-					WHERE EmployeeId = ?
-					""";
-			
-			Connection con = DriverManager.getConnection(url, name, password);
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			
-			try (con; pstmt; rs;) {
-				while (rs.next()) {
-					Employee employee = new Employee();
-					employee.setId(rs.getInt("employeeId"));
-					employee.setFirstName(rs.getString("firstName"));
-					employee.setLastName(rs.getString("lastName"));
-					
-					list.add(employee);
-				}
-			}
-			
-			model.addAttribute("employeeList", list);
-			
-			
-			return "/sub13/link2";
-		}
+		model.addAttribute("employeeList", list);
+		
+		
+		return "/sub13/link2";
 	}
-
-
-
-
-
-
+}
 
 
 

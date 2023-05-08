@@ -46,38 +46,48 @@ public class Controller20 {
 		String name = mapper.method4(customerId);
 		System.out.println(name);
 	}
-
+	
 	// link5?id=2
 	// 2번 직원의 lastName을 콘솔에 출력
 	@RequestMapping("link5")
 	public void method5(Integer id) {
 		System.out.println(mapper.method5(id));
 	}
-
+	
+	
 	@RequestMapping("link6")
 	public void method6() {
 		Integer price = mapper.method6();
 		System.out.println(price);
-	}
-
-	// mapper01 에 method7 작성
-	// 하나의 row의 weight 컬럼의 값 리턴
-	@RequestMapping("link7")
-	public void method7() {
+		
+		// mapper01 에  method7 작성
+		// 하나의 row의 weight 컬럼의 값 리턴
 		Double weight = mapper.method7();
 		System.out.println(weight);
-	}
-
-	@RequestMapping("link8")
-	public void method8() {
+		
 		LocalDate published = mapper.method8();
 		System.out.println(published);
-	}
-
-	@RequestMapping("link9")
-	public void method9() {
+		
 		LocalDateTime updated = mapper.method9();
 		System.out.println(updated);
+	}
+	
+	@RequestMapping("link7")
+	public void method() {
+		Dto06 res = mapper.method10();
+		System.out.println(res);
+	}
+	
+	@RequestMapping("link8")
+	public void method8() {
+		Dto05 res = mapper.method11();
+		System.out.println(res);
+	}
+	
+	@RequestMapping("link9")
+	public void method9() {
+		Customer cus = mapper.method12();
+		System.out.println(cus);
 	}
 	
 	@RequestMapping("link10")
@@ -86,9 +96,20 @@ public class Controller20 {
 		System.out.println(sup); // 2번 공급자 정보출력
 	}
 	
+	// method11 mapper.method14() 실행 결과 콘솔에 출력
 	@RequestMapping("link11")
 	public void method11() {
-		Employee sup = mapper.method14();
-		System.out.println(sup); //
+		System.out.println(mapper.method14());
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

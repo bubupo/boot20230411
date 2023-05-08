@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("sub3")
 public class Controller03 {
 	
+	// spring mvc request handler method
+	// 
+
 	@RequestMapping("link1")
 	public void method01() {
-		System.out.println("sub3/link1 실행중");
+		System.out.println("/sub3/link1 에서 일하는 메소드");
 	}
 	
 	@RequestMapping("link2")
 	public void method02() {
-		System.out.println("sub3/link2 실행중");
+		System.out.println("/sub3/link2 에서 일하는 메소드");
+
 	}
 }

@@ -110,24 +110,22 @@ public interface Mapper01 {
 			WHERE CustomerId = 7
 			""")
 	Customer method12();
-	
+
 	@Select("""
 			SELECT
-				SupplierId
-				SupplierName,
+				SupplierId id,
+				SupplierName name,
 				ContactName,
 				City,
 				Country,
 				Address,
 				PostalCode,
 				Phone
-				FROM Suppliers
-				WHERE SupplierId=2
-				
+			FROM Suppliers
+			WHERE SupplierId = 2
 			""")
 	Supplier method13();
-	
-	
+
 	@Select("""
 			SELECT
 				EmployeeId id,
@@ -141,3 +139,18 @@ public interface Mapper01 {
 			""")
 	Employee method14();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

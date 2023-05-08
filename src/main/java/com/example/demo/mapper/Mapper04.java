@@ -15,12 +15,12 @@ public interface Mapper04 {
 			WHERE Col1 = #{id}
 			""")
 	int sql2(Integer id);
-	
+
 	@Delete("""
 			DELETE FROM Customers
-			WHERE CustomerID = #{key}
+			WHERE CustomerID = #{id}
 			""")
-	int sql3(Integer key);
+	int sql3(Integer id);
 
 }
 

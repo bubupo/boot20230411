@@ -21,11 +21,11 @@ public class Controller14 {
 	@Value("${spring.datasource.password}")
 	private String password;
 	
-	//추가업무 : ContactName에도 키워드 조회 추가
-	//1 쿼리 수정
-	//2 pstmt에 2번째 물음표에 set하는 코드 추가
-	//3 customer 자바빈의 contactName 프로퍼티 추가
-	//4 /sub13/link1 뷰에 contactName 속성 출력하는 테ㅣ블 열 추가
+	// 추가업무 : ContactName에도 키워드 조회 추가
+	// 1. 쿼리 수정
+	// 2. pstmt에 2번째 물음표에 set 하는 코드 추가
+	// 3. Customer 자바빈의 contactName 프로퍼티 추가
+	// 4. /sub13/link1 뷰에 contactName 속성 출력하는 테이블 열 추가
 	
 	// /sub14/link1?keyword=or
 	@RequestMapping("link1")
@@ -34,7 +34,7 @@ public class Controller14 {
 				SELECT CustomerID, CustomerName, Address, ContactName
 				FROM Customers
 				WHERE CustomerName LIKE ?
-					OR ContactName LIKE ? 
+				   OR ContactName LIKE ?
 				""";
 		var list = new ArrayList<Customer>();
 		
@@ -51,13 +51,17 @@ public class Controller14 {
 				c.setAddress(rs.getString("address"));
 				c.setName(rs.getString("customerName"));
 				c.setContactName(rs.getString("contactName"));
+				
 				list.add(c);
 			}
 		}
 		
 		model.addAttribute("customerList", list);
 		
-		
 		return "/sub13/link1";
 	}
 }
+
+
+
+

@@ -9,13 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.domain.*;
 import com.example.demo.mapper.*;
 
-import ch.qos.logback.core.net.*;
-
 @Controller
 @RequestMapping("sub21")
 public class Controller21 {
 
-	
 	@Autowired
 	private Mapper02 mapper;
 	
@@ -53,13 +50,17 @@ public class Controller21 {
 		names.forEach(System.out::println);
 	}
 	
-	//모든 상품의 이름 가격을 조회해서 콘솔에 출력
+	// 모든 상품의 이름,가격을 
+	// 조회해서 콘솔에 출력
+	// 1)컨트롤러메소드
+	// 2)매퍼 메소드
+	// 3)Dto08 자바빈
 	@RequestMapping("link4")
 	public void method4() {
-		List<Dto08> names = mapper.sql4();
-		names.forEach(System.out::println);
+		mapper.sql4().forEach(System.out::println);
 	}
 	
+	// /sub21/link5?cid=3
 	@RequestMapping("link5")
 	public void method5(@RequestParam("cid") Integer cid) {
 		List<String> names = mapper.sql5(cid);
@@ -67,7 +68,10 @@ public class Controller21 {
 	}
 	
 	// /sub21/link6?country=uk
-	//각 국가에 있는 고객명(customerName) 이 콘솔에 출력
+	// /sub21/link6?country=canada
+	// 각 국가에 있는 고객명(customerName)이 콘솔에 출력
+	// 1)컨트롤러메소드
+	// 2)매퍼메소드
 	@RequestMapping("link6")
 	public void method6(String country) {
 		List<String> names = mapper.sql6(country);
@@ -75,7 +79,34 @@ public class Controller21 {
 	}
 	
 	@RequestMapping("link7")
-	public void method7(Integer cid) {
+	public void method7(@RequestParam Integer cid) {
 		mapper.sql7(cid).forEach(System.out::println);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

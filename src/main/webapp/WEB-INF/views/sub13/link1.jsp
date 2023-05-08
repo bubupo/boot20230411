@@ -14,19 +14,7 @@
 	<!-- 페이지네이션 -->
 	<div>
 		<nav aria-label="Page navigation example">
-		
-		
-		
 			<ul class="pagination">
-			
-			<c:if test="${prevPageNumber ge 1 }">
-					<li class="page-item">
-						<c:url value="/sub26/link1" var="pageLink">
-							<c:param name="page" value="${firstPageNumber }"></c:param>
-						</c:url>
-						<a href="${pageLink }" class="page-link">맨앞</a>
-					</li>
-				</c:if>
 			
 				<c:if test="${prevPageNumber ge 1 }">
 					<li class="page-item">
@@ -55,16 +43,6 @@
 						<a href="${pageLink }" class="page-link">다음</a>
 					</li>
 				</c:if>
-				
-				<c:if test="${nextPageNumber le lastPageNumber }">
-					<li class="page-item">
-						<c:url value="/sub26/link1" var="pageLink">
-							<c:param name="page" value="${lastPageNumber }"></c:param>
-						</c:url>
-						<a href="${pageLink }" class="page-link">맨뒤</a>
-					</li>
-				</c:if>
-				
 			</ul>
 		</nav>
 	</div>
@@ -96,3 +74,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+

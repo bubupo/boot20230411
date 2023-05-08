@@ -89,3 +89,16 @@ public interface Mapper05 {
 			""")
 	int sql7(Employee employee);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

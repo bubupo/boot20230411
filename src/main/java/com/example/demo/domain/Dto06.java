@@ -7,8 +7,8 @@ import lombok.*;
 @Data
 public class Dto06 {
 	private String title;
-	private Double weight;
 	private Integer price;
-	private LocalDate published;
+	private Double weight;
 	private LocalDateTime updated;
+	private LocalDate published;
 }

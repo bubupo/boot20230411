@@ -15,7 +15,6 @@ public interface Mapper02 {
 	List<String> sql1();
 
 	// 모든 직원의 LastName 조회
-
 	@Select("""
 			SELECT LastName FROM Employees
 			""")
@@ -26,31 +25,40 @@ public interface Mapper02 {
 			FROM Employees
 			""")
 	List<Dto07> sql3();
-	
+
 	@Select("""
-			SELECT ProductName,Price 
+			SELECT ProductName, Price
 			FROM Products
 			""")
 	List<Dto08> sql4();
+	
 	
 	@Select("""
 			SELECT ProductName
 			FROM Products
 			WHERE CategoryId = #{cid}
 			""")
-	List<String>sql5(Integer cid);
-	
+	List<String> sql5(Integer cid);
+
 	@Select("""
 			SELECT CustomerName
 			FROM Customers
 			WHERE Country = #{country}
 			""")
-	List<String>sql6(String country);
+	List<String> sql6(String country);
+	
 	
 	@Select("""
 			SELECT ProductName, Price
 			FROM Products
 			WHERE CategoryId = #{cid}
 			""")
-	List<Dto08>sql7(Integer cid);
+	// 메소드 작성
+	// 작성된 메소드를 controller21.method7에서 호출
+	List<Dto08> sql7(Integer cid);
 }
+
+
+
+
+

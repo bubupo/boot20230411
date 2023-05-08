@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 @Component
-public class ConponentE {
+public class ComponentE {
 
 	@Autowired
 	private ComponentD comp;

@@ -12,3 +12,8 @@ public class Customer {
 	private String postalCode;
 	private String country;
 }
+
+
+
+
+

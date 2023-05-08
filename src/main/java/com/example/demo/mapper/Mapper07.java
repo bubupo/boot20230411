@@ -12,8 +12,8 @@ public interface Mapper07 {
 	@Select("""
 			<script>
 			<bind name="pattern" value="'%' + keyword + '%'" />
-			
-			SELECT 
+
+			SELECT
 				customerId id,
 				customerName name,
 				contactName,
@@ -26,13 +26,12 @@ public interface Mapper07 {
 			</script>
 			""")
 	List<Customer> sql1(String keyword);
-	
-	
+
 	@Select("""
 			<script>
-			<bind name="p" value="'%' + search + '%'" />
-			
-			SELECT 
+			<bind name="p" value="'%' + s + '%'" />
+
+			SELECT
 				EmployeeId id,
 				FirstName,
 				LastName
@@ -44,9 +43,8 @@ public interface Mapper07 {
 			ORDER BY id DESC
 			</script>
 			""")
-	List<Employee> sql2(String search);
+	List<Employee> sql2(String s);
 
-	
 	@Select("""
 			<script>
 			SELECT COUNT(*)
@@ -62,28 +60,36 @@ public interface Mapper07 {
 	
 	@Select("""
 			<script>
+			
 			SELECT COUNT(*)
 			FROM Customers
 			
 			<if test="keyword neq null">
-				<bind name="pattern" value=" '%' + keyword + '%'"/>
+				<bind name="pattern" value="'%' + keyword + '%'" />
 				WHERE CustomerName LIKE #{pattern}
-			</if>
+			</if> 
+			
 			</script>
 			""")
-	
 	Integer sql4(String keyword);
 
-	// 3번 카테고리의 상품의 평균 가격
-	// 모든 상품의 평균 가격
-	@Select("""  
+	@Select("""
 			<script>
 			SELECT AVG(Price)
 			FROM Products
+			
 			<if test="cid neq 0">
-			WHERE CategoryId = #{cid}
+				WHERE CategoryId = #{cid}
 			</if>
 			</script>
 			""")
 	Double sql5(int cid);
 }
+
+
+
+
+
+
+
+
